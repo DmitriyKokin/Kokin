@@ -1,15 +1,26 @@
-step = input(f'Введите направление, куда вы хотите пойти: "up" "down" "left" "right"\nсейчас вы находитесь в точке 0:0\n')
-distance = int(input(f'\n а так же шаг, на сколько вы пойдете (int) :'))
-pnt = [int(0),int(0)]
-if step == 'up':
-    pnt[1]+=distance
-elif step == 'down':
-    pnt[1]-=distance
-elif step == 'left':
-    pnt[0]-=distance
-elif step == 'right':
-    pnt[0]+=distance
-else:
-    print(f"error")
+try:
+    n = int(input(f'Введите n - количество элементов в массиве:\n'))
+except :
+    print(f'USER ERROR')
     exit()
-print (f'{pnt}')
+a=[]
+try:
+    for i in range(0,n):
+        a.append(float(input(f'{i}-й элемент: ')))
+except:
+    print(f'USER ERROR')
+    exit()
+print(f'Наш массив:{a}')
+try:
+    ch = int(input(f'min -> max ---- 1\nmax -> min ---- 2\n'))
+except:
+    print(f'USER ERROR')
+    exit()
+#Реализация метода пузырька:
+for i in range(0,n):
+    for j in range(n-i-1):
+        if a[j]>a[j+1] and ch == 1:
+            a[j],a[j+1]=a[j+1],a[j]
+        elif a[j]<a[j+1] and ch == 2:
+            a[j],a[j+1]=a[j+1],a[j]
+print(f'отсортированный массив: {a}')

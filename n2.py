@@ -1,38 +1,31 @@
-def usererror():
-    print(f"USER Error")
-    exit()
-
-pnt = [int(0),int(0)]
-step = input(f'Введите направление, куда вы хотите пойти: "up" "down" "left" "right"\nсейчас вы находитесь в точке {pnt[0]}:{pnt[1]}\n"finish" для окончания\n')
-if step != 'up' and step != 'down' and step != 'left' and step != 'right' and step != 'finish':
-    usererror()
-if step == 'finish':
-    print(f'see you again :)\n')
+import random
+#Создание словаря из цветов:
+color = dict([('red',(1,0,0)), ('black', (0,0,0)), ('white',(1,1,1)), ('blue', (0,0,1))])
+print(f'{color}')
+#cоздание 2-х множеств
 try:
-    distance = int(input('Введите условное расстояние, которое вы преодолеете\n'))
+    n = int(input(f'Введите количество ранодомных значений, которые сгенерируются, с учетом дублей\n'))
 except:
-   usererror()
-flag = False
-while step != 'finish':
-    if flag:
-        step = input(f'Направление (или "finish"): ')
-        if step == 'finish':
-            print(f"see you again :)\nx={pnt[0]} y={pnt[1]}")
-            break
-        try:
-            distance = int(input(f'шаг, на сколько вы пойдете (int) :'))
-        except:
-             usererror()
-    flag=True
-    if step == 'up':
-        pnt[1]+=distance
-    elif step == 'down':
-        pnt[1]-=distance
-    elif step == 'left':
-        pnt[0]-=distance
-    elif step == 'right':
-        pnt[0]+=distance
-    else:
-        print(f"incorrect command\nx={pnt[0]} y={pnt[1]}")
-        exit()
-    print (f'x={pnt[0]} y={pnt[1]}')
+    print(f'User error')
+a=set()
+for i in range(0,n):
+    tmp = random.randint(1,10)
+    a.add(tmp)
+try:
+    n = int(input(f'Введите количество ранодомных значений, которые сгенерируются, с учетом дублей во второе множество\n'))
+except:
+    print(f'User error')
+b=set()
+for i in range(0,n):
+    tmp = random.randint(1,10)
+    b.add(tmp)
+print(f'Первое множество:{a}\nВторое множество: {b}')
+#входят одновременно в оба;
+print(f'входят одновременно в оба {set.intersection(a,b)}')
+#входят в 1 и не входят во 2
+
+print(f'входят в 1 и не входят во 2: {a.difference(b)}')
+#входят во 2 и не входят в 1
+print(f'входят во 2 и не входят в 1: {b.difference(a)}')
+#входят в первое или во второе, но не в оба из них одновременно
+print(f'входят в первое или во второе, но не в оба из них одновременно: {a.difference(b).union(b.difference(a))}')
