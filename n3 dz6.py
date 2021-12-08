@@ -22,6 +22,7 @@ e = encrypt(mytext, key)
 out = open('C:\Школа Linux\Домашняя работа по питону\ДЗ 6\output3.txt', 'w')
 out.write(f'{e}')
 print(f'encrypt(x2):\n{encrypt(e,key)}')
+out.close()
 
 
 
